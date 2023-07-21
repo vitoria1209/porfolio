@@ -1,0 +1,39 @@
+function doGet() {
+  return HtmlService.createTemplateFromFile('calcular').evaluate();
+  
+}
+function doPost(e){
+  Logger.log(e.parameter.dias)
+  Logger.log(e.parameter.quantidadeAlunos)
+  Logger.log(e.parameter.valorRefeicao)
+}
+function getUrl(){
+  var url = ScriptApp.getService().getUrl();
+  return url
+}  
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    
+    <? var url = getUrl() ?>
+
+    <form action="<?= url ?>" method="POST">
+    <label for="dias">Número de dias do mês:</label>
+    <input type="number" id="dias" name="dias" required><br><br>
+  
+    <label for="quantidadeAlunos">Quantidade de alunos da escola:</label>
+    <input type="number" id="quantidadeAlunos" name="quantidadeAlunos"/>
+  
+    <label for="valorRefeicao">Valor da refeição por dia:</label>
+    <input type="number" id="valorRefeicao" name="valorRefeicao" step="0.01" />
+  
+    <button type="submit">Enviar</button>   
+    </form>
+    
+  </body>
+</html>
