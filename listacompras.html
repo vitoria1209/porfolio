@@ -1,0 +1,120 @@
+function doGet(){
+
+return HtmlService.createTemplateFromFile('compras').evaluate();
+
+}
+
+function incluir (CSS) {
+
+return HtmlService.createHtmlOutputFromFile('estilo').getContent();
+}
+
+<style>
+
+input {
+
+width: 200px;
+
+padding: 12px 20px; margin: 8px 0;
+
+border: none;
+
+border-bottom: 2px solid red;
+
+background-color: #3cbc8d; color: white;
+
+box-sizing: border-box;
+
+}
+
+button{
+
+background-color: #4CAF50;
+
+border: none; color: white;
+
+padding: 15px 40px;
+
+text-align: center;
+
+text-decoration: none;
+
+font-size: 16px;
+
+margin: 4px 2px;
+
+cursor: pointer;
+}
+</style>
+
+
+<DOCTYPE html>
+
+<html lang="pt-br
+
+<head>
+
+">
+
+<meta charse="UTF-8" />
+
+<?!= incluir ('CSS'); ?> <h1> Lista de Compras </h1>
+
+</head>
+
+<body>
+
+<form onsubmit="cadastrarProduto()">
+
+<label for="produto"> Informe o produto: </label>
+
+<input type="text" id="produto" required/>
+
+<label for="pQuantidade"> Quantidade do produto: </label>
+
+<input type="number" id="pQuantidade" required/>
+
+<button type="submit"> Enviar </button>
+
+</form>
+
+<table id="tabela Produto" style="border: solid 1px">
+
+<tr>
+
+<th>Produto comprado - </th>
+
+<th>Quantidade comprada</th>
+
+</tr>
+
+</table>
+
+<script>
+function cadastrarProduto(){ event.preventDefault()
+
+var produto = document.getElementById('produto').value
+
+var pQuantidade = document.getElementById('pQuantidade').value
+
+var tabelaProduto = document.getElementById('tabelaProduto')
+
+var linha = document.createElement('tr')
+
+var colunaProduto = document.createElement('td') var colunaPQuantidade = document.createElement('td')
+
+colunaProduto.innerHTML = produto
+
+colunaPQuantidade.innerHTML = pQuantidade
+
+linha.appendChild(colunaProduto) linha.appendChild(colunaPQuantidade)
+
+tabelaProduto.appendChild(linha)
+
+}
+
+</script>
+
+</body>
+
+</html>
